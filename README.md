@@ -12,23 +12,26 @@ The script has been tested on a Raspberry Pi Zero W running Raspbian Stretch.
 
 # Installation
 
+```bash
 apt-get install mosquitto-clients bc
 git clone https://github.com/mplinuxgeek/Xiaomi-BLE-Temperature-and-Humidity-sensor
 cd Xiaomi-BLE-Temperature-and-Humidity-sensor
 sudo ln -s $(pwd)/mi_temp.sh /opt/mi-temp
-
+```
 # Configuration
 
 Scan for BT devices:
+```bash
 sudo hcitool lescan
-
+```
 The Mi Temp devices appear as "MJ_HT_V1"
 Look for a line like this:
 4C:65:A8:DC:0F:B2 MJ_HT_V1
 
 Copy the line with "MJ_HT_V1" and add it to the sensors file:
+```bash
 nano sensors
-
+```
 The file should be formatted like a CSV file, replace MJ_HT_V1 with the a name for the sensor (do not use spaces), it should look something like this:
 4C:65:A8:DC:0F:B2,Outside
 
