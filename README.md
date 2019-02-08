@@ -40,3 +40,8 @@ The file should be formatted like a CSV file, replace MJ_HT_V1 with the a name f
 ```
 
 If you have more than one sensor add as many as you like, the script will loop through the content of the sensors file.
+
+Lastly create a crontab entry.
+```cron
+*/1 * * * * /opt/mi_temp > /tmp/mi_temp
+```
