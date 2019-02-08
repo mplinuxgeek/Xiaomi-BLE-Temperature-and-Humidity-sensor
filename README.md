@@ -25,14 +25,18 @@ Scan for BT devices:
 sudo hcitool lescan
 ```
 The Mi Temp devices appear as "MJ_HT_V1"
-Look for a line like this:
-4C:65:A8:DC:0F:B2 MJ_HT_V1
 
+Look for a line like this:
+```
+4C:65:A8:DC:0F:B2 MJ_HT_V1
+```
 Copy the line with "MJ_HT_V1" and add it to the sensors file:
 ```bash
 nano sensors
 ```
 The file should be formatted like a CSV file, replace MJ_HT_V1 with the a name for the sensor (do not use spaces), it should look something like this:
+```
 4C:65:A8:DC:0F:B2,Outside
+```
 
 If you have more than one sensor add as many as you like, the script will loop through the content of the sensors file.
