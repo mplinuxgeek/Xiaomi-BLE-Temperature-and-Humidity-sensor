@@ -4,22 +4,20 @@ Bash script for retrieving data from Xiaomi BLE Temperature and Humidity sensor 
 These sensors have an LCD screen, run from 1 AAA battery and use an SHT30 temperature and humidity sensor. They are designed to be used with Xiaomi's Mi Home App.
 ![Alt text](images/MiTemp.jpg?raw=true "Title")
 
-These sensors use have fairly short range so this script is designed to be run from a linux computer with a USB Bluetooth dongle or from one of the Raspberry Pi's with Wifi/BT.
+These sensors have fairly short range so this script is designed to be run from a linux computer with a USB Bluetooth dongle or from one of the Raspberry Pi's with Wifi/BT.
 
 ![Alt text](images/screenshot.png?raw=true "Title")
 
-The has been tested on a Raspberry Pi Zero W running Raspbian Stretch.
+The script has been tested on a Raspberry Pi Zero W running Raspbian Stretch.
 
-
-#Installation
+# Installation
 
 apt-get install mosquitto-clients bc
 git clone https://github.com/mplinuxgeek/Xiaomi-BLE-Temperature-and-Humidity-sensor
 cd Xiaomi-BLE-Temperature-and-Humidity-sensor
 sudo ln -s $(pwd)/mi_temp.sh /opt/mi-temp
 
-
-#Configuration
+# Configuration
 
 Scan for BT devices:
 sudo hcitool lescan
