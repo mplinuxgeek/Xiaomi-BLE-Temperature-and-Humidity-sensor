@@ -30,7 +30,7 @@ sudo hciconfig hci0 up
 sudo btmgmt le on
 # Scan for LE devices
 sudo hcitool lescan
-# or for a format nicely formatted for copy and paste
+# or for an output nicely formatted for copy and paste
 sudo hcitool lescan | grep "MJ_HT_V1" | tr ' ' ','
 ```
 The Mi Temp devices appear as "MJ_HT_V1"
