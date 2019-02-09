@@ -12,6 +12,9 @@ These sensors have fairly short range so this script is designed to be run from 
 
 The script has been tested on a Raspberry Pi Zero W running Raspbian Stretch.
 
+Originally version of the script:
+<https://community.home-assistant.io/t/xiaomi-mijia-bluetooth-temperature-humidity-sensor-compatibility/43568/7>
+
 # Installation
 
 ```bash
