@@ -1,6 +1,4 @@
-```diff
-- THIS IS A WORK IN PROGRESS!
-```
+![Alt text](images/wip.png?raw=true "Title")
 
 # Xiaomi-BLE-Temperature-and-Humidity-sensor
 Bash script for retrieving data from Xiaomi BLE Temperature and Humidity sensor and publishing via MQTT.
