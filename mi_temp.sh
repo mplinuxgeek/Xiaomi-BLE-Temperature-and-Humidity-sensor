@@ -4,13 +4,14 @@ mqtt_topic="mi_temp"
 mqtt_ip="192.168.1.60"
 
 sensors_file="/opt/sensors"
+
 cel=$'\xe2\x84\x83'
 per="%"
 
-RED='\033[1;31m'
-GREEN='\033[1;32m'
-YELLOW='\033[1;33m'
-NC='\033[0m'
+red='\033[1;31m'
+green='\033[1;32m'
+yellow='\033[1;33m'
+nc='\033[0m'
 
 script_name="$(basename "$(test -L "$0" && readlink "$0" || echo "$0")")"
 
@@ -22,7 +23,6 @@ fi
 trap 'rm -f "${lock_file}"; exit' INT TERM EXIT
 echo $$ > "${lock_file}"
 
-
 echo "Opening and initializing HCI device"
 sudo hciconfig hci0 up
 echo "Enabling LE Mode"
@@ -32,31 +32,31 @@ while read -r item; do
     sensor=(${item//,/ })
     mac="${sensor[0]}"
     name="${sensor[1]}"
-    echo -e "\n${YELLOW}Sensor: $name ($mac)${NC}"
+    echo -e "\n${yellow}Sensor: $name ($mac)${nc}"
 
-    RET=1
-    until [ ${RET} -eq 0 ]; do
+    exit_code=1
+    until [ ${exit_code} -eq 0 ]; do
         echo -n "  Getting $name Temperature and Humidity... "
         data=$(timeout 30 /usr/bin/gatttool -b "$mac" --char-write-req --handle=0x10 -n 0100 --listen 2>&1 | grep -m 1 "Notification")
-        RET=$?
-        if [ ${RET} -ne 0 ]; then
-            echo -e "${RED}failed, waiting 5 seconds before trying again${NC}"
+        exit_code=$?
+        if [ ${exit_code} -ne 0 ]; then
+            echo -e "${red}failed, waiting 5 seconds before trying again${nc}"
             sleep 5
         else
-            echo -e "${GREEN}success${NC}"
+            echo -e "${green}success${nc}"
         fi
     done
 
-    RET=1
-    until [ ${RET} -eq 0 ]; do
+    exit_code=1
+    until [ ${exit_code} -eq 0 ]; do
         echo -n "  Getting $name Battery Level..."
         battery=$(/usr/bin/gatttool -b "$mac" --char-read --handle=0x18 2>&1 | cut -c 34-35)
-        RET=$?
-        if [ ${RET} -ne 0 ]; then
-            echo -e "${RED}failed, waiting 5 seconds before trying again${NC}"
+        exit_code=$?
+        if [ ${exit_code} -ne 0 ]; then
+            echo -e "${red}failed, waiting 5 seconds before trying again${nc}"
             sleep 5
         else
-            echo -e "${GREEN}success${NC}"
+            echo -e "${green}success${nc}"
         fi
     done
 
@@ -82,8 +82,7 @@ while read -r item; do
     echo -e "done"
 done < "$sensors_file"
 
-echo -e "\nClosing HCI device"
-sudo hciconfig hci0 down
+#echo -e "\nclosing HCI device"
+#sudo hciconfig hci0 down
 
 echo "Finished"
-
