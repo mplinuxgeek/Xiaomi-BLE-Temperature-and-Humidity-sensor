@@ -1,3 +1,5 @@
+![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `WORK IN PROGRESS`
+
 # Xiaomi-BLE-Temperature-and-Humidity-sensor
 Bash script for retrieving data from Xiaomi BLE Temperature and Humidity sensor and publishing via MQTT.
 
