@@ -22,9 +22,16 @@ sudo ln -s $(pwd)/mi_temp.sh /opt/mi_temp
 ```
 # Configuration
 
-Scan for BT devices:
+Find MAC address of you Mi Temp devices:
 ```bash
+# Enable and initialise HCI device
+sudo hciconfig hci0 up
+# Enable LE mode
+sudo btmgmt le on
+# Scan for LE devices
 sudo hcitool lescan
+# or for a format nicely formatted for copy and paste
+sudo hcitool lescan | grep "MJ_HT_V1" | tr ' ' ','
 ```
 The Mi Temp devices appear as "MJ_HT_V1"
 
@@ -34,9 +41,9 @@ Look for a line like this:
 ```
 Copy the line with "MJ_HT_V1" and add it to the sensors file:
 ```bash
-nano sensors
+nano /opt/sensors
 ```
-The file should be formatted like a CSV file, replace MJ_HT_V1 with the a name for the sensor (do not use spaces), it should look something like this:
+The file should be formatted like a CSV file, the MAC address and Name should be separated by a comma and replace MJ_HT_V1 with a name for the sensor (do not use spaces), it should look something like this:
 ```
 4C:65:A8:DC:0F:B2,Outside
 ```
