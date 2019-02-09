@@ -1,7 +1,6 @@
 ```diff
 - THIS IS A WORK IN PROGRESS!
 ```
-<span style="color:red">some **THIS IS A WORK IN PROGRESS!** text</span>
 
 # Xiaomi-BLE-Temperature-and-Humidity-sensor
 Bash script for retrieving data from Xiaomi BLE Temperature and Humidity sensor and publishing via MQTT.
