@@ -16,7 +16,7 @@ The script has been tested on a Raspberry Pi Zero W running Raspbian Stretch.
 apt-get install mosquitto-clients bc
 git clone https://github.com/mplinuxgeek/Xiaomi-BLE-Temperature-and-Humidity-sensor
 cd Xiaomi-BLE-Temperature-and-Humidity-sensor
-sudo ln -s $(pwd)/mi_temp.sh /opt/mi-temp
+sudo ln -s $(pwd)/mi_temp.sh /opt/mi_temp
 ```
 # Configuration
 

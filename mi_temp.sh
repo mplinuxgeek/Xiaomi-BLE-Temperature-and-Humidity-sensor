@@ -37,7 +37,7 @@ while read -r item; do
     RET=1
     until [ ${RET} -eq 0 ]; do
         echo -n "  Getting $name Temperature and Humidity... "
-        data=$(timeout 10 /usr/bin/gatttool -b "$mac" --char-write-req --handle=0x10 -n 0100 --listen 2>&1 | grep -m 1 "Notification")
+        data=$(timeout 30 /usr/bin/gatttool -b "$mac" --char-write-req --handle=0x10 -n 0100 --listen 2>&1 | grep -m 1 "Notification")
         RET=$?
         if [ ${RET} -ne 0 ]; then
             echo -e "${RED}failed, waiting 5 seconds before trying again${NC}"
