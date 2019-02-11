@@ -6,9 +6,11 @@ Bash script for retrieving data from Xiaomi BLE Temperature/Humidity sensor and 
 Specs|[]()
 ------------- | -------------
 Temp/Humidity Sensor|SHT30-DIS-B (Typical accuracy of ±2% RH and ±0.2°C) [Datasheet](https://www.sensirion.com/fileadmin/user_upload/customers/sensirion/Dokumente/0_Datasheets/Humidity/Sensirion_Humidity_Sensors_SHT3x_Datasheet_digital.pdf)
-CPU|Nordic N51802
+CPU|N51802
 LCD Driver|BU9795AFV
 Power|1x AAA
+
+I can't find any real information on the CPU but it appears to be a Nordic nRF51802 that's not available to the general public, Mousers description is "Nordic Semiconductor BLE/2.4GHz RF SoC with 256K Flash nRF51 LC QFN 48 pin 6x6"
 
 ![Alt text](images/MiTemp.jpg?raw=true "Title")
 
