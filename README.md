@@ -1,18 +1,21 @@
 ![Alt text](images/wip.png?raw=true "Title")
 
 # Xiaomi-BLE-Temperature-and-Humidity-sensor
-Bash script for retrieving data from Xiaomi BLE Temperature and Humidity sensor and publishing via MQTT.
+Bash script for retrieving data from Xiaomi BLE Temperature/Humidity sensor and publishing via MQTT. These sensors are designed to be connected to Xiaomi's Mi app but provide no historic data recording, only current readings.
 
-These sensors have an LCD screen, run from 1 AAA battery and use an SHT30 temperature and humidity sensor. They are designed to be used with Xiaomi's Mi Home App.
+Specs:
+CPU | Nordic N51802
+Temp/Humidity Sensor | SHT30-DIS-B (Typical accuracy of ±2% RH and ±0.2°C) [Datasheet](https://www.sensirion.com/fileadmin/user_upload/customers/sensirion/Dokumente/0_Datasheets/Humidity/Sensirion_Humidity_Sensors_SHT3x_Datasheet_digital.pdf)
+LCD Driver | BU9795AFV
+Power|  1x AAA
+
 ![Alt text](images/MiTemp.jpg?raw=true "Title")
 
-These sensors have fairly short range so this script is designed to be run from a linux computer with a USB Bluetooth dongle or from one of the Raspberry Pi's with Wifi/BT.
+These sensors have fairly short range so this script is designed to be run from a linux computer or a Raspberry Pi with BT LE capability, tested/developed on a Raspberry Pi Zero W running Raspbian Stretch using the built in BT.
 
 ![Alt text](images/screenshot.png?raw=true "Title")
 
-The script has been tested on a Raspberry Pi Zero W running Raspbian Stretch.
-
-Originally version of the script:
+Original version of the script written by mig in the Home Assistant forums:
 <https://community.home-assistant.io/t/xiaomi-mijia-bluetooth-temperature-humidity-sensor-compatibility/43568/7>
 
 # Installation
