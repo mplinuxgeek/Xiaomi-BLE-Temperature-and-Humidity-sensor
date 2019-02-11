@@ -5,8 +5,8 @@ Bash script for retrieving data from Xiaomi BLE Temperature/Humidity sensor and 
 
 Specs|[]()
 ------------- | -------------
-CPU|Nordic N51802
 Temp/Humidity Sensor|SHT30-DIS-B (Typical accuracy of ±2% RH and ±0.2°C) [Datasheet](https://www.sensirion.com/fileadmin/user_upload/customers/sensirion/Dokumente/0_Datasheets/Humidity/Sensirion_Humidity_Sensors_SHT3x_Datasheet_digital.pdf)
+CPU|Nordic N51802
 LCD Driver|BU9795AFV
 Power|1x AAA
 
