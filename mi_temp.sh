@@ -51,6 +51,7 @@ while read -r item; do
     until [ ${exit_code} -eq 0 ]; do
         echo -n "  Getting $name Battery Level..."
         battery=$(/usr/bin/gatttool -b "$mac" --char-read --handle=0x18 2>&1 | cut -c 34-35)
+        battery=${battery^^}
         exit_code=$?
         if [ ${exit_code} -ne 0 ]; then
             echo -e "${red}failed, waiting 5 seconds before trying again${nc}"
