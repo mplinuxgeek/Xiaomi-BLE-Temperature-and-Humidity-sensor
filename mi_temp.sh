@@ -63,9 +63,11 @@ while read -r item; do
     temp=$(echo "$data" | tail -1 | cut -c 42-54 | xxd -r -p)
     humid=$(echo "$data" | tail -1 | cut -c 64-74 | xxd -r -p)
     batt=$(echo "ibase=16; $battery"  | bc)
+    dewp=$(echo "scale=1; (243.12 * (l( $humid / 100) +17.62* $temp/(243.12 + $temp)) / 17.62 - (l( $humid / 100) +17.62* $temp/(243.12 + $temp))  )" | bc -l)
     echo "  Temperature: $temp$cel"
     echo "  Humidity: $humid$per"
     echo "  Battery Level: $batt$per"
+    echo "  Dew Point: $dewp$cel"
 
     echo -e -n "  Publishing data via MQTT... "
     if [[ "$temp" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
@@ -78,6 +80,10 @@ while read -r item; do
 
     if [[ "$batt" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
         /usr/bin/mosquitto_pub -h $mqtt_ip -V mqttv311 -t "/$mqtt_topic/$name/battery" -m "$batt"
+    fi
+    
+    if [[ "$dewp" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
+        /usr/bin/mosquitto_pub -h $mqtt_ip -V mqttv311 -t "/$mqtt_topic/$name/dewpoint" -m "$dewp"
     fi
     echo -e "done"
 done < "$sensors_file"
